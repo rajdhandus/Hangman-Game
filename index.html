@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman Game</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/javascript/game.js"></script>
+    
+</head>
+
+<body onload="init()">
+    <h1>Guess the State</h1>
+
+
+    <div class="container">
+        <div class="row row-eq-height">
+            <div id="hint" class="col-xs-6 box-frame">
+                <p class="hintSpace">Hint for guessing</p>
+                <p id="hintAboutState" class="hintSpace"></p>
+            </div>
+            <div id="gamepad" class="col-xs-6 box-frame">
+                <p class="instructions">Press a key to get started!</p>
+                <p class="score">Wins</p>
+                <p class="instructions">Current Word</p>
+                <p id="play-area" class="play-space"></p>
+                <p class="instructions">
+                    Number of guesses remaining
+                </p>
+                <p class="instructions">
+                    Letters guessed already
+                </p>
+                <p id="guessed">
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

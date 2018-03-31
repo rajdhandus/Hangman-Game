@@ -1,0 +1,23 @@
+body {
+    background-image: url("../images/chris-lawton-217429-unsplash.jpg");
+    background-size:cover;
+    text-align: center;
+
+}
+
+.box-frame{
+    border: 2px solid white;
+}
+
+.instructions, .score, .play-space, .hintSpace {
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+}
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+  }
