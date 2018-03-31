@@ -1,37 +1,136 @@
 var randSt = "";
+var winningNumber = 0;
+var lost = false;
+var won = false;
 
-function init() {
-  randSt = randomState().name;
-  console.log(randSt);
-  var dashes = document.createElement("p");
+function resetGame() {
+  var randSelect = randomState();
+  randSt = randSelect.name;
+  winningNumber = randSt.length;
+  randStMotto = randSelect.stateMoto;
+  console.log(randSt, randStMotto);
+
   var buf = "";
+
   for (var i = 0; i < randSt.length; i++) {
     buf += "_ ";
   }
+
+  document.getElementById("dashes").textContent = buf;
+  document.getElementById("guessed").textContent = "";
+  document.getElementById("counter").textContent = 10;
+  document.getElementById("hintAboutState").textContent = randStMotto;
+  found = false;
+  lost = false;
+  won = false;
+}
+
+function init() {
+  var randSelect = randomState();
+  randSt = randSelect.name;
+  winningNumber = randSt.length;
+  randStMotto = randSelect.stateMoto;
+  console.log(randSt, randStMotto);
+
+  var dashes = document.createElement("p");
+  var buf = "";
+
+  for (var i = 0; i < randSt.length; i++) {
+    buf += "_ ";
+  }
+
   dashes.textContent = buf;
   dashes.setAttribute("id", "dashes");
   document.getElementById("play-area").appendChild(dashes);
-  document.getElementById("hintAboutState").textContent = randomState().stateMoto;
+  document.getElementById("hintAboutState").textContent = randStMotto;
+  document.getElementById("newGameBtn").addEventListener("click", function() {
+    resetGame();
+  });
 }
 
 var body = document.getElementById("body");
 window.addEventListener("keypress", function(keypress) {
-    
-    var dashText = document.getElementById("dashes").textContent.split(" ");
-    if(!document.getElementById("guessed").textContent.toLowerCase().includes(keypress.key.toLowerCase())) {
-        document.getElementById("guessed").textContent += keypress.key + " ";
-    }
+  var found = false;
+  var dashText = document.getElementById("dashes").textContent.split(" ");
+  if (
+    !document
+      .getElementById("guessed")
+      .textContent.toLowerCase()
+      .includes(keypress.key.toLowerCase())
+  ) {
+    // if the guess is not repetitive;
 
-  console.log("pressed key is "+keypress.key);
-  for (var j = 0; j < randSt.length; j++) {
-    if (keypress.key.toLowerCase() === randSt[j].toLowerCase()) {
-      console.log(randSt[j]);
-      dashText[j] = randSt[j];
+    if (won) {
+      alert("You have won already; please start a new game!");
+    } else if (lost) {
+      alert("You have lost; please start a new game!");
+    } else {
+      // and if the game has not been lost go on to add to the already guessed-so-far list
+      document.getElementById("guessed").textContent += keypress.key + " ";
+
+      for (j = 0; j < randSt.length; j++) {
+        if (keypress.key.toLowerCase() === randSt[j].toLowerCase()) {
+          // if the guess is right
+          dashText[j] = randSt[j];
+          winningNumber--;
+          found = true;
+        }
+        //keep trying till you hit it
+      }
+
+      if (!found) {
+        var wrongScore = document.getElementById("counter");
+        var number = wrongScore.innerHTML;
+        if (number > 0) {
+          number--;
+          console.log(" chance remain number derecremented " + number);
+          wrongScore.innerHTML = number;
+          if (number == 0) {
+            //lost the game in the last key press
+            lost = true;
+            this.document.getElementById("dashes").textContent = randSt;
+
+            // enable button
+            // show the answer
+          }
+        }
+      }
+
+      if (winningNumber == 0 && !won) {
+        var winScore = document.getElementById("wins");
+        var winNum = winScore.innerHTML;
+        winNum++;
+        won = true;
+        winScore.innerHTML = winNum;
+      }
+
+      document.getElementById("dashes").textContent = dashText.join(" ");
     }
+  } else {
+    console.log("pressed key is new");
+    if (lost) {
+      alert("You have lost; please start a new game!");
+    } else if (won) {
+      alert("You have won already; please start a new game!");
+    } else {
+      var wrongScore = document.getElementById("counter");
+      var number = wrongScore.innerHTML;
+      if (number > 0) {
+        number--;
+        console.log(" chance remain number derecremented " + number);
+        wrongScore.innerHTML = number;
+        if (number == 0) {
+          //lost the game in the last key press
+          lost = true;
+          this.document.getElementById("dashes").textContent = randSt;
+
+          // enable button
+          // show the answer
+        }
+      }
+    }
+    // found = true;
   }
-
-  document.getElementById("dashes").textContent = dashText.join(" ");
-
 
 });
 
@@ -240,5 +339,6 @@ function randomState() {
   ];
 
   var randomIndex = Math.floor(Math.random() * 50);
+  console.log(states[randomIndex]);
   return states[randomIndex];
 }

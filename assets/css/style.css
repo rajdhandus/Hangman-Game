@@ -2,11 +2,19 @@ body {
     background-image: url("../images/chris-lawton-217429-unsplash.jpg");
     background-size:cover;
     text-align: center;
+}
 
+h1 {
+    color: rgb(216, 212, 207);
 }
 
 .box-frame{
     border: 2px solid white;
+    /* display: table-cell; */
+}
+
+.right-column{
+    border-left: 2px solid white;
 }
 
 .instructions, .score, .play-space, .hintSpace {
@@ -15,9 +23,12 @@ body {
     font-size: 18px;
 }
 
+.newGmBtn {
+    margin: 10px;
+}
 .row-eq-height {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display:         flex;
+    display: table;
   }

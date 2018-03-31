@@ -16,29 +16,34 @@
 </head>
 
 <body onload="init()">
-    <h1>Guess the State</h1>
+    <h1>Guess The State</h1>
 
 
     <div class="container">
-        <div class="row row-eq-height">
-            <div id="hint" class="col-xs-6 box-frame">
-                <p class="hintSpace">Hint for guessing</p>
+        <div class="row box-frame">
+            <div id="hint" class="col-xs-6">
+                <p class="hintSpace">Hint</p>
                 <p id="hintAboutState" class="hintSpace"></p>
             </div>
-            <div id="gamepad" class="col-xs-6 box-frame">
+            <div id="gamepad" class="col-xs-6 right-column">
                 <p class="instructions">Press a key to get started!</p>
                 <p class="score">Wins</p>
+                <p id="wins" class="instructions">0</p>
                 <p class="instructions">Current Word</p>
                 <p id="play-area" class="play-space"></p>
                 <p class="instructions">
                     Number of guesses remaining
                 </p>
+                <p id="counter" class="instructions">10</p>
                 <p class="instructions">
                     Letters guessed already
                 </p>
-                <p id="guessed">
+                <p id="guessed" class="instructions">
 
                 </p>
+                <br>
+                <br>
+                <button id="newGameBtn" class="btn btn-success newGmBtn">New Game</button>
             </div>
         </div>
     </div>
