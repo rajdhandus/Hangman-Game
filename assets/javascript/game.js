@@ -52,12 +52,13 @@ var body = document.getElementById("body");
 window.addEventListener("keypress", function(keypress) {
   var found = false;
   var dashText = document.getElementById("dashes").textContent.split(" ");
+  console.log(" \"" + keypress.key + "\"");
   if (
     !document
       .getElementById("guessed")
       .textContent.toLowerCase()
       .includes(keypress.key.toLowerCase())
-  ) {
+  || (keypress.key==" ")) {
     // if the guess is not repetitive;
 
     if (won) {
@@ -65,6 +66,7 @@ window.addEventListener("keypress", function(keypress) {
     } else if (lost) {
       alert("You have lost; please start a new game!");
     } else {
+      console.log("\"" + keypress + "\"");
       // and if the game has not been lost go on to add to the already guessed-so-far list
       document.getElementById("guessed").textContent += keypress.key + " ";
 
