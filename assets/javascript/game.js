@@ -4,6 +4,7 @@ var lost = false;
 var won = false;
 
 function resetGame() {
+  disableButton();
   var randSelect = randomState();
   randSt = randSelect.name;
   winningNumber = randSt.length;
@@ -74,6 +75,9 @@ window.addEventListener("keypress", function(keypress) {
         if (keypress.key.toLowerCase() === randSt[j].toLowerCase()) {
           // if the guess is right
           dashText[j] = randSt[j];
+          if(keypress.key.toLowerCase()==" ") {
+
+          }
           winningNumber--;
           found = true;
         }
@@ -104,6 +108,7 @@ window.addEventListener("keypress", function(keypress) {
         winNum++;
         won = true;
         winScore.innerHTML = winNum;
+        enableButton();
       }
 
       document.getElementById("dashes").textContent = dashText.join(" ");
@@ -124,8 +129,8 @@ window.addEventListener("keypress", function(keypress) {
         if (number == 0) {
           //lost the game in the last key press
           lost = true;
-          this.document.getElementById("dashes").textContent = randSt;
-
+          document.getElementById("dashes").textContent = randSt;
+          enableButton();
           // enable button
           // show the answer
         }
@@ -135,6 +140,18 @@ window.addEventListener("keypress", function(keypress) {
   }
 
 });
+
+function enableButton() {
+  //alert("enablebutton");
+  document.getElementById("newGameBtn").removeAttribute("disabled");
+  document.getElementById("newGameBtn").setAttribute("class", "btn btn-success newGmBtn");
+}
+
+function disableButton() {
+  document.getElementById("newGameBtn").setAttribute("class", "btn btn-success newGmBtn disabled");
+  document.getElementById("newGameBtn").setAttribute("disabled", "disabled");
+
+}
 
 function randomState() {
   var states = [
