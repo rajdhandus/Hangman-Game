@@ -5,6 +5,9 @@ var won = false;
 var randStMotto = "";
 var stFlag = "";
 
+
+// resetGame function will be used to reset the page back to the initial state
+
 function resetGame() {
   disableButton();
   var randSelect = randomState();
@@ -12,7 +15,7 @@ function resetGame() {
   winningNumber = randSt.length;
   randStMotto = randSelect.stateMoto;
   stFlag = "./assets/images/"+randSelect.flag;
-  console.log(randSt, randStMotto);
+  console.log(randSt + " : "+ randStMotto);
 
   var buf = "";
 
@@ -43,28 +46,10 @@ function showFlag() {
 }
 
 function init() {
-  var randSelect = randomState();
-  randSt = randSelect.name;
-  winningNumber = randSt.length;
-  randStMotto = randSelect.stateMoto;
-  console.log(randSt, randStMotto);
-
-  var dashes = document.createElement("p");
-  var buf = "";
-
-  for (var i = 0; i < randSt.length; i++) {
-    buf += "_ ";
-  }
-
-  dashes.textContent = buf;
-  dashes.setAttribute("id", "dashes");
-  document.getElementById("play-area").appendChild(dashes);
-  // document.getElementById("hintAboutState").textContent = randStMotto;
-  stFlag = "./assets/images/"+randSelect.flag;
+  resetGame();
 
   document.getElementById("newGameBtn").addEventListener("click", function() {
     resetGame();
-    // showMotto();//reset the motto
   });
 
   document.getElementById("mottoBtn").addEventListener("click", function() {
@@ -72,21 +57,16 @@ function init() {
   });
 
   document.getElementById("flagBtn").addEventListener("click", function() {
-    // showMotto();
     showFlag();
   });
 }
 
-var body = document.getElementById("body");
+
 window.addEventListener("keypress", function(keypress) {
   var found = false;
   var dashText = document.getElementById("dashes").textContent.split(" ");
   console.log(" \"" + keypress.key + "\"");
-  if (
-    !document
-      .getElementById("guessed")
-      .textContent.toLowerCase()
-      .includes(keypress.key.toLowerCase())
+  if (!document.getElementById("guessed").textContent.toLowerCase().includes(keypress.key.toLowerCase())
   || (keypress.key==" ")) {
     // if the guess is not repetitive;
 
@@ -124,8 +104,6 @@ window.addEventListener("keypress", function(keypress) {
           if (number == 0) {
             //lost the game in the last key press
             lost = true;
-            console.log(document.getElementById("dashes").textContent);
-            console.log(randSt);
             document.getElementById("dashes").textContent = randSt;
             enableButton();
             // enable button
@@ -155,25 +133,7 @@ window.addEventListener("keypress", function(keypress) {
       enableButton();
     } else if (won) {
       alert("You have won already; please start a new game!");
-    } else {
-
-      // var wrongScore = document.getElementById("counter");
-      // var number = wrongScore.innerHTML;
-      // if (number > 0) {
-      //   number--;
-      //   console.log(" chance remain number derecremented " + number);
-      //   wrongScore.innerHTML = number;
-      //   if (number == 0) {
-      //     //lost the game in the last key press
-      //     lost = true;
-      //     document.getElementById("dashes").textContent = randSt;
-      //     enableButton();
-      //     // enable button
-      //     // show the answer
-      //   }
-      // }
     }
-    // found = true;
   }
 
 });
