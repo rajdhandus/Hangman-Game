@@ -18,7 +18,7 @@ function resetGame() {
   }
 
   document.getElementById("dashes").textContent = buf;
-  document.getElementById("guessed").textContent = "";
+  document.getElementById("guessed").innerHTML = '&nbsp;';
   document.getElementById("counter").textContent = 10;
   document.getElementById("hintAboutState").textContent = randStMotto;
   found = false;
