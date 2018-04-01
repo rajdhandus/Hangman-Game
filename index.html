@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="./assets/javascript/game.js"></script>
-    
+
 </head>
 
 <body onload="init()">
@@ -22,8 +22,21 @@
     <div class="container">
         <div class="row box-frame">
             <div id="hint" class="col-xs-6">
-                <p class="hintSpace">Hint</p>
-                <p id="hintAboutState" class="hintSpace"></p>
+                <div class="row">
+                    <p class="hintSpace">Hint</p>
+                </div>
+                <div class="row">
+                    <button id="mottoBtn" class="btn btn-primary">Show State Motto</button>
+                </div>
+                <div class="row">
+                    <p id="hintAboutState" class="hintSpace">&nbsp;</p>
+                </div>
+                <div class="row">
+                    <button id="flagBtn" class="btn btn-primary">Show State Flag</button>
+                </div>
+                <div class="row">
+                    <img id="flagHint" src="" alt="">
+                </div>
             </div>
             <div id="gamepad" class="col-xs-6 right-column">
                 <p class="instructions">Press a key to get started!</p>
@@ -41,7 +54,7 @@
 
                 <div class="row">
                     <div id="guessed" class="col-sm-12 instructions">
-                            &nbsp;
+                        &nbsp;
                     </div>
                 </div>
                 <br>
@@ -53,10 +66,8 @@
         </div>
     </div>
 
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>

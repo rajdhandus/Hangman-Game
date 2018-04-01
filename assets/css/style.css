@@ -13,6 +13,11 @@ h1 {
     /* display: table-cell; */
 }
 
+img {
+    width: 150px;
+    height: 150px;
+}
+
 .right-column{
     border-left: 2px solid white;
 }
@@ -23,8 +28,8 @@ h1 {
     font-size: 18px;
 }
 
-.newGmBtn {
-    margin: 10px;
+#mottoBtn, #flagBtn, #newGameBtn {
+    margin: 10px 10px 10px 10px;
 }
 .row-eq-height {
     display: -webkit-box;
